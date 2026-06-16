@@ -6,6 +6,8 @@ class TransformData:
 
     def transform(self, df: pd.DataFrame) -> pd.DataFrame:
 
+        df.drop_duplicates(inplace=True)
+
         # Padronização dos nomes das colunas
         df.rename(
             columns={
@@ -32,7 +34,6 @@ class TransformData:
             )
         )
 
-        df.drop_duplicates(inplace=True)
 
         # Tratando quantidade de alunos
         df['num_students_enrolled'] = (
@@ -57,7 +58,7 @@ class TransformData:
         )
 
         # Tipo
-        df['type'] = 'Country'
+        df['category_type'] = 'Country'
 
         mask = df['university_name'].str.contains(
             'University|Institute|Universidade|LMU|TU|ETH|Polytechnic|College|School',
@@ -65,7 +66,7 @@ class TransformData:
             na=False
         )
 
-        df.loc[mask, 'type'] = 'University'
+        df.loc[mask, 'category_type'] = 'University'
 
         # Ratio
         ratio = df['female_male_ratio'].str.extract(

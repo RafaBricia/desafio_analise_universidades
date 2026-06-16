@@ -1,6 +1,6 @@
 import pandas as pd
 
-from src.infra.database_conector import DatabaseConnector
+from ETL.src.infra.database_conector import DatabaseConnector
 
 
 class LoadToSQL:
