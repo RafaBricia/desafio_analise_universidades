@@ -1,0 +1,8 @@
+-- rank,university_name,num_students_enrolled,num_students_employee,percentual_international_students,date_random,type,female_pct,male_pct
+--Quais universidades possuem maior internacionalização?
+
+SELECT university_name, percentual_international_students
+FROM universities_ranking
+WHERE percentual_international_students IS NOT NULL
+ORDER BY percentual_international_students DESC
+LIMIT 10;
